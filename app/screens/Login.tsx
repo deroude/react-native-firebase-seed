@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Button, TextInput, Icon, IconButton, VStack } from "@react-native-material/core";
 import { initializeApp } from "firebase/app";
 import firebaseConfig from "../../firebase-config.json";
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -8,7 +7,8 @@ import {
     onAuthStateChanged,
     signInWithEmailAndPassword
 } from 'firebase/auth';
-import { StyleProp, ViewStyle } from "react-native";
+import { StyleProp, View, ViewStyle } from "react-native";
+import { Button, TextInput } from "react-native-paper";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -28,37 +28,33 @@ const LoginScreen = ({ navigation }: any) => {
 
     const inputStyle: StyleProp<ViewStyle> = {
         alignSelf: 'stretch',
-        marginLeft: 20,
-        marginRight: 20
+        margin: 20
     };
 
     return (
-        <VStack fill center spacing={2} style={{ alignSelf: 'stretch' }}>
+        <View style={{ alignSelf: 'stretch', display: 'flex', flexDirection: 'column', height: '50%', marginTop: '30%' }}>
             <TextInput
+                mode="outlined"
                 style={inputStyle}
                 label="Email"
-                variant="outlined"
-                leading={props => <Icon name="account" {...props} />}
-                onChangeText={(email) => setEmail(email)}
+                value={email}
+                autoComplete={false}
+                onChangeText={(email: string) => setEmail(email)}
             />
             <TextInput
+                mode="outlined"
                 label="Password"
                 style={inputStyle}
                 secureTextEntry={hidePassword}
-                variant="outlined"
-                trailing={props => (
-                    <IconButton
-                        icon={props => <Icon name="eye" {...props} />} {...props}
-                        onPress={() => setHidePassword(!hidePassword)}
-                    />
-                )}
+                value={password}
+                autoComplete={false}
                 onChangeText={(password) => setPassword(password)}
+                right={<TextInput.Icon name="eye" onPress={() => setHidePassword(!hidePassword)} />}
             />
-            <Button
-                title="Login"
+            <Button mode="outlined" style={{ alignSelf: 'center' }}
                 onPress={() => signInWithEmailAndPassword(auth, email, password)}
-            />
-        </VStack>
+            >Login</Button>
+        </View>
     );
 }
 

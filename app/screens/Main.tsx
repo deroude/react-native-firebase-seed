@@ -2,8 +2,9 @@ import React from "react";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from "./Home";
-import ContactScreen from "./Contact";
+import ItemScreen from "./Items";
 
+//https://reactnavigation.org/docs/tab-based-navigation
 const Tab = createBottomTabNavigator();
 
 const MainNavigator = () => (
@@ -21,15 +22,16 @@ const MainNavigator = () => (
             }}
         />
         <Tab.Screen
-            name="Contact"
-            component={ContactScreen}
+            name="Items"
+            component={ItemScreen}
             options={{
                 headerShown: false,
-                tabBarLabel: 'Contact',
+                tabBarLabel: 'Items',
                 tabBarIcon: ({ color }) => (
-                    <Icon name="pen" color={color} size={26} />
+                    <Icon name="table" color={color} size={26} />
                 ),
-            }} />
+            }}
+        />       
     </Tab.Navigator>
 );
 
