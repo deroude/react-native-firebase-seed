@@ -30,6 +30,6 @@ In a terminal:
 ```
 git clone https://github.com/deroude/react-native-firebase-seed.git
 cd react-native-firebase-seed
-yarn install
-yarn start
+npm install
+npm start
 ```
