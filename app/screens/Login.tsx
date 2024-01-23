@@ -4,14 +4,20 @@ import firebaseConfig from "../../firebase-config.json";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
     getAuth,
+    initializeAuth,
     onAuthStateChanged,
     signInWithEmailAndPassword
 } from 'firebase/auth';
+//@ts-ignore
+import { getReactNativePersistence } from '@firebase/auth/dist/rn/index.js';
+import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
 import { StyleProp, View, ViewStyle } from "react-native";
 import { Button, TextInput } from "react-native-paper";
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+const auth = initializeAuth(app, {
+    persistence: getReactNativePersistence(ReactNativeAsyncStorage)
+});
 
 const LoginScreen = ({ navigation }: any) => {
 
@@ -38,7 +44,6 @@ const LoginScreen = ({ navigation }: any) => {
                 style={inputStyle}
                 label="Email"
                 value={email}
-                autoComplete={false}
                 onChangeText={(email: string) => setEmail(email)}
             />
             <TextInput
@@ -47,9 +52,8 @@ const LoginScreen = ({ navigation }: any) => {
                 style={inputStyle}
                 secureTextEntry={hidePassword}
                 value={password}
-                autoComplete={false}
                 onChangeText={(password) => setPassword(password)}
-                right={<TextInput.Icon name="eye" onPress={() => setHidePassword(!hidePassword)} />}
+                right={<TextInput.Icon icon="eye" onPress={() => setHidePassword(!hidePassword)} />}
             />
             <Button mode="outlined" style={{ alignSelf: 'center' }}
                 onPress={() => signInWithEmailAndPassword(auth, email, password)}

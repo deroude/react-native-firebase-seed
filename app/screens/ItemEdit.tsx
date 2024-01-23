@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { StyleProp, ViewStyle } from "react-native";
-import { Button, Paragraph, TextInput } from "react-native-paper";
+import { Button, TextInput } from "react-native-paper";
 import MainLayout from "./Layout";
 import { getFirestore, setDoc, doc, addDoc, collection } from 'firebase/firestore';
 
