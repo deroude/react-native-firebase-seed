@@ -40,6 +40,7 @@ const LoginScreen = ({ navigation }: any) => {
     return (
         <View style={{ alignSelf: 'stretch', display: 'flex', flexDirection: 'column', height: '50%', marginTop: '30%' }}>
             <TextInput
+            left={<TextInput.Icon icon="email" />}
                 mode="outlined"
                 style={inputStyle}
                 label="Email"

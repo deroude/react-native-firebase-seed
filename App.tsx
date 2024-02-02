@@ -27,7 +27,7 @@ const theme = {
 
 function App() {
   return (
-    <PaperProvider theme={theme}>
+    <PaperProvider theme={theme} settings={{rippleEffectEnabled: true}}>
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
