@@ -38,16 +38,16 @@ const LoginScreen = ({ navigation }: any) => {
     };
 
     return (
-        <View style={{ alignSelf: 'stretch', display: 'flex', flexDirection: 'column', height: '50%', marginTop: '30%' }}>
+        <View style={{ backgroundColor: '#F4ECD6', alignSelf: 'stretch', display: 'flex' , flexDirection: 'column', height: '50%', marginTop: '30%'}}>
             <TextInput
-                mode="outlined"
+                mode="underlined"
                 style={inputStyle}
                 label="Email"
                 value={email}
                 onChangeText={(email: string) => setEmail(email)}
             />
             <TextInput
-                mode="outlined"
+                mode="underlined"
                 label="Password"
                 style={inputStyle}
                 secureTextEntry={hidePassword}
@@ -57,7 +57,7 @@ const LoginScreen = ({ navigation }: any) => {
             />
             <Button mode="outlined" style={{ alignSelf: 'center' }}
                 onPress={() => signInWithEmailAndPassword(auth, email, password)}
-            >Login</Button>
+            >Login</Button> 
         </View>
     );
 }

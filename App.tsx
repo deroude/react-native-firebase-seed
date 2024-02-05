@@ -20,7 +20,7 @@ const theme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    primary: 'magenta',
+    primary: '#7D3C7E',
     accent: 'yellow',
   },
 };
@@ -38,4 +38,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; 
