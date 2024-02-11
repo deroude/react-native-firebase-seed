@@ -8,7 +8,7 @@ const Stack = createNativeStackNavigator();
 const HomeScreen = ({ navigation }: any) => {
 
     const [data, setData] = useState<{ label: string, quantity: number }[]>();
-
+//map page
     return (
         <MainLayout>
             <Paragraph>Hello!</Paragraph>
