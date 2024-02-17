@@ -36,7 +36,7 @@ const MainLayout = ({ children }: any) => {
                 <Appbar.Content title={`Welcome, ${user.displayName || user.email}`} />
                 <Appbar.Action icon="logout" onPress={async () => { await signOut(auth); navigation.navigate('Login') }} />
             </Appbar.Header>
-            <View style={{ alignSelf: 'stretch', backgroundColor: 'pink', height: '80%', display: 'flex', flexDirection: 'column' }}>{children}</View>
+            <View style={{ alignSelf: 'stretch', backgroundColor: '#F4ECD6', height: '100%', display: 'flex', flexDirection: 'column' }}>{children}</View>
 
         </SafeAreaView> :
             <ActivityIndicator />
