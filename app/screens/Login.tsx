@@ -55,8 +55,9 @@ const LoginScreen = ({ navigation }: any) => {
     };
 
     return (
-        <View style={{ backgroundColor: '#F4ECD6', alignSelf: 'stretch', display: 'flex' , flexDirection: 'column', height: '100%', justifyContent: "center"}}>
-            <Text variant="displayMedium">Sign In</Text>
+        
+        <View style={{ backgroundColor: '#F4ECD6', alignSelf: 'stretch', display: 'flex' , flexDirection: 'column', height: '100%',justifyContent: "center", paddingLeft: 20, paddingRight: 20}}>
+            <Text variant="headlineLarge">Sign In</Text>
             <TextInput
                 mode="flat"
                 style={inputStyle}
@@ -75,7 +76,7 @@ const LoginScreen = ({ navigation }: any) => {
                 left={<TextInput.Icon icon="lock" />}
                 right={<TextInput.Icon icon="eye" onPress={() => setHidePassword(!hidePassword)} />}
             />
-            <Button buttonColor='#300A31' mode="outlined" style={{ alignSelf: 'center'}}
+            <Button buttonColor='#300A31' mode="outlined" style={{ alignSelf: 'center', height: 45, width: 200}}
                 //onPress={() => signInWithEmailAndPassword(auth, email, password)}
                 onPress={goDirectlyToMain}
                 textColor="white"
