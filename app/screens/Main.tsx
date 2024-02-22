@@ -3,6 +3,7 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from "./Home";
 import ItemScreen from "./Items";
+import AddDisasterScreen from "./AddDisaster";
 
 //https://reactnavigation.org/docs/tab-based-navigation
 const Tab = createBottomTabNavigator();
@@ -22,13 +23,13 @@ const MainNavigator = () => (
             }}
         />
         <Tab.Screen
-            name="Items"
-            component={ItemScreen}
+            name="Add Disaster"
+            component={AddDisasterScreen}
             options={{
                 headerShown: false,
-                tabBarLabel: 'Items',
+                tabBarLabel: 'Add Disaster',
                 tabBarIcon: ({ color }) => (
-                    <Icon name="table" color={color} size={26} />
+                    <Icon name="plus" color={color} size={26} />
                 ),
             }}
         />       
