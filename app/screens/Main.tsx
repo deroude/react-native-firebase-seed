@@ -1,7 +1,7 @@
 import React from "react";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from "./Home";
+import HomeScreen from "./Home page/Home";
 import ItemScreen from "./Items";
 import AddDisasterScreen from "./AddDisaster";
 
