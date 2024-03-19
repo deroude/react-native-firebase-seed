@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import MapView from 'react-native-maps';
+import MapView, { Callout} from 'react-native-maps';
 import { Surface } from "react-native-paper";
 import { TextInput } from "react-native-paper";
-import {View, ScrollView } from 'react-native';
+import {View, ScrollView, TouchableOpacity } from 'react-native';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import { SegmentedButtons } from 'react-native-paper';
 import { Marker } from "react-native-maps";
@@ -53,7 +53,12 @@ export default function HomeScreen({ navigation }: any) {
   return (
     <View style={stil.container}>
       <MapView style={stil.map} initialRegion={initialRegion}>
-      <Marker coordinate={{ latitude: 37.78825, longitude: -122.4324 }} />
+      <Marker coordinate={{ latitude: 37.78825, longitude: -122.4324 }} >
+      <Callout>
+            <View>
+            </View>
+          </Callout>
+      </Marker>
       </MapView>
       <Surface style={stil.search}>
         <TextInput
@@ -88,15 +93,38 @@ export default function HomeScreen({ navigation }: any) {
     </SafeAreaView>
     <List.Section>
       <List.Accordion
-        title="Filters"
-        left={props => <List.Icon {...props} icon="folder" />}
-        expanded={expanded}
+        title="Severity"
         onPress={handlePress}>
-        <List.Item title="Severity"/>
-        <List.Item title="Victims" />
-        <List.Item title="Refion Affected"/>
-        <List.Item title="Popularity"/>
+        <List.Item title="High"/>
+        <List.Item title="Moderate" />
+        <List.Item title="Low"/>
       </List.Accordion>
+      <List.Accordion
+      title="Victims"
+      onPress={handlePress}>
+      <List.Item title="1000+"/>
+      <List.Item title="500+"/>
+      <List.Item title="250+"/>
+      <List.Item title="100+"/>
+      <List.Item title="1+"/>
+      <List.Item title="0"/>
+      </List.Accordion>
+      <List.Accordion
+      title="Affected Region"
+      onPress={handlePress}>
+      <List.Item title="Multiple Countries"/>
+      <List.Item title="A Country"/>
+      <List.Item title="A City"/>
+      <List.Item title="A neighbourghood"/>
+      </List.Accordion>
+      <List.Accordion
+      title="Popularity"
+      onPress={handlePress}>
+      <List.Item title="High Approval"/>
+      <List.Item title="Approved"/>
+      <List.Item title="Low Approval"/>
+      </List.Accordion>
+      
     </List.Section>
     </Surface>
     </View>
