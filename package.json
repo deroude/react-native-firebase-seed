@@ -25,7 +25,8 @@
     "react-native-maps": "^1.10.3",
     "react-native-paper": "^5.12.2",
     "react-native-picker-select": "^9.0.1",
-    "react-native-search-bar": "^3.5.1"
+    "react-native-search-bar": "^3.5.1",
+    "react-native-vector-icons": "^10.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.23.7",

@@ -7,7 +7,8 @@ import { SafeAreaView, StyleSheet } from 'react-native';
 import { SegmentedButtons } from 'react-native-paper';
 import { Marker } from "react-native-maps";
 import { List } from 'react-native-paper';
-
+import { Dialog, Portal, Text, Button } from 'react-native-paper'
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const stil = StyleSheet.create({
   map: {
@@ -43,23 +44,67 @@ export default function HomeScreen({ navigation }: any) {
   };
   const [value, setValue] = React.useState('');
   const initialRegion = {
-    latitude: 37.72825,
-    longitude: -122.4324,
+    latitude: 48.383022,
+    longitude: 31.1828699,
     latitudeDelta: 0.25,
     longitudeDelta: 0.15
   };
   const [expanded, setExpanded] = React.useState(true);
   const handlePress = () => setExpanded(!expanded);
+  const [visible, setVisible] = React.useState(false);
+
+  const hideDialog = () => setVisible(false);
+  const [markerDialogVisible, setMarkerDialogVisible] = React.useState(false);
+  const showMarkerDialog = () => {
+    setMarkerDialogVisible(true);
+    return null;
+  };
+  const handleYesButtonPress = () => {
+    setMarkerDialogVisible(false); 
+  };
+  const handleNoButtonPress = () => {
+    setMarkerDialogVisible(false); 
+  };
+
   return (
     <View style={stil.container}>
       <MapView style={stil.map} initialRegion={initialRegion}>
-      <Marker coordinate={{ latitude: 37.78825, longitude: -122.4324 }} >
-      <Callout>
-            <View>
-            </View>
-          </Callout>
-      </Marker>
+      <Marker
+  coordinate={{ latitude: 48.383022, longitude: 31.1828699 }}
+  onPress={showMarkerDialog} 
+>
+<Icon
+  name="warning"
+  size={30}
+  color="red"
+  style={{
+    textShadowColor: 'red',
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 10,
+    shadowColor: 'red', 
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.6, 
+    elevation: 3,
+  }}
+/>
+</Marker>
       </MapView>
+      <Portal>
+        <Dialog visible={markerDialogVisible} onDismiss={hideDialog}>
+        <Dialog.Title>
+            <Text style={{ fontWeight: 'bold' }}>You clicked on the war between Ukraine and Russia</Text>
+          </Dialog.Title>
+          <Dialog.Content>
+            <Text variant="bodyMedium">Is this hazard real?</Text>
+            <Text variant="bodyMedium">100.000+ other people say it is a real threat</Text>
+          </Dialog.Content>
+          <Dialog.Actions>
+            <Button onPress={handleNoButtonPress}>No</Button>
+            <Button onPress={handleYesButtonPress}>Yes</Button>
+          </Dialog.Actions>
+        </Dialog>
+      </Portal>
+
       <Surface style={stil.search}>
         <TextInput
           placeholder="Type Here..."
@@ -74,18 +119,27 @@ export default function HomeScreen({ navigation }: any) {
         buttons={[
           {
             value: 'war',
+            icon: () => <Icon name="warning" size={20}  />,
             label: 'war',
           },
           {
             value: 'geological hazards',
             label: 'geological',
+            icon: () => <Icon name="landslide" size={20}  />,
           },
-          { value: 'meteorological hazards', label: 'meteorological' },
+          { value: 'meteorological hazards', 
+          label: 'meteorological',
+          icon: () => <Icon name="cloud" size={20}  />, 
+        },
           {
-            value: 'hydrological hazards', label: 'hydrological'
+            value: 'hydrological hazards',
+            label: 'hydrological',
+            icon: () => <Icon name="water" size={20}  />, 
           },
           {
-            value: 'biological hazards', label: 'biological'
+            value: 'biological hazards',
+            label: 'biological',
+            icon: () => <Icon name="man" size={20}  />, 
           }
         ]}
       />
