@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import MapView, { Callout} from 'react-native-maps';
 import { Surface } from "react-native-paper";
 import { TextInput } from "react-native-paper";
@@ -9,6 +9,7 @@ import { Marker } from "react-native-maps";
 import { List } from 'react-native-paper';
 import { Dialog, Portal, Text, Button } from 'react-native-paper'
 import Icon from 'react-native-vector-icons/MaterialIcons';
+
 
 const stil = StyleSheet.create({
   map: {
@@ -65,7 +66,6 @@ export default function HomeScreen({ navigation }: any) {
   const handleNoButtonPress = () => {
     setMarkerDialogVisible(false); 
   };
-
   return (
     <View style={stil.container}>
       <MapView style={stil.map} initialRegion={initialRegion}>

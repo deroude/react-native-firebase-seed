@@ -4,7 +4,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from "./Home page/Home";
 import ItemScreen from "./Items";
 import AddDisasterScreen from "./AddDisaster";
-
+import DonationScreen from "./Donation"
+import ProfileScreen from "./Profile"
 //https://reactnavigation.org/docs/tab-based-navigation
 const Tab = createBottomTabNavigator();
 
@@ -33,6 +34,28 @@ const MainNavigator = () => (
                 ),
             }}
         />       
+        <Tab.Screen
+            name="Donations"
+            component={DonationScreen}
+            options={{
+                headerShown: false,
+                tabBarLabel: 'Donation',
+                tabBarIcon: ({ color }) => (
+                    <Icon name="gift" color={color} size={26} />
+                ),
+            }}
+        />
+        <Tab.Screen
+            name="Profile"
+            component={ProfileScreen}
+            options={{
+                headerShown: false,
+                tabBarLabel: 'Profile',
+                tabBarIcon: ({ color }) => (
+                    <Icon name="account" color={color} size={26} />
+                ),
+            }}
+        />
     </Tab.Navigator>
 );
 
