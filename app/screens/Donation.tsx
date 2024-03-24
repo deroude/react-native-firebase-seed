@@ -1,38 +1,38 @@
 import React, { useState } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MainLayout from "./Layout";
-import { Paragraph } from "react-native-paper";
-import { View } from "react-native";
+import { IconButton, Paragraph, Snackbar } from "react-native-paper";
+import { SafeAreaView, ScrollView, View } from "react-native";
 import RNPickerSelect from 'react-native-picker-select';
 import { Button, TextInput, Text } from "react-native-paper";
 //here you import
 
 const DonationScreen = ({ navigation }: any): any => {
 
-  const [text, setText] = React.useState("");
+  const [donation, setDonation] = React.useState(0);
+  const [sent, setSent] = React.useState(false)
 
-  const [selectedDisasterType, setSelectedDisasterType] = useState(null);
-
-  const disasterTypeOptions = [
-    { label: 'war', value: 'war' },
-    { label: 'Option 2', value: 'option2' },
-    { label: 'Option 3', value: 'option3' },
-  ];
-
-  const [selectedDisasterSeverity, setSelectedDisasterSeverity] = useState(null);
-
-  const disasterSeverityOptions = [
-    { label: 'Option 1', value: 'option1' },
-    { label: 'Option 2', value: 'option2' },
-    { label: 'Option 3', value: 'option3' },
-  ];
-  //here you define the constants
   return (
-    
-<TextInput
-label={"Donation Screen"}
-/>
-   //you put the code here
+    <>
+      <SafeAreaView>
+        <ScrollView style={{ marginTop: '30%', padding: 20 }}>
+          <TextInput
+            label="Amount"
+            left={<TextInput.Affix text="$" />}
+            style={{ marginBottom: 30 }}
+            inputMode="numeric"
+            onChange={ev => setDonation(Number(ev.nativeEvent.text))}
+          />
+          <Button mode='outlined' onPress={() => setSent(true)}>Send</Button>
+        </ScrollView>
+      </SafeAreaView>
+      <Snackbar
+        visible={sent}
+        onDismiss={console.log}
+      >
+        <Text style={{ color: 'white' }}>Thanks for your donation of {donation}$.</Text>
+      </Snackbar>
+    </>
   );
 }
 
