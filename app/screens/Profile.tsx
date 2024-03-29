@@ -10,20 +10,33 @@ import { StyleSheet } from 'react-native';
 
 const stil = StyleSheet.create({
   Text: {
-    color: 'FFFFF',
+    fontSize: 24,
+    fontWeight: 'bold', 
+    marginTop: 50,
+    marginLeft: 20,
+    marginBottom: 20,
+    textAlign: 'center'
   
+  },
+  textContainer: {
+    backgroundColor: '#A7CAB1', 
+    padding: 10, 
+    borderRadius: 20, 
+    marginBottom: 20,
+    alignItems: 'center', 
+    justifyContent: 'center', 
   },
 
 });
 const ProfileScreen = ({ navigation }: any): any => {
-
-
- 
   return (
     
     <View style={{ backgroundColor: '#F4ECD6', alignSelf: 'stretch', display: 'flex', flexDirection: 'column', height: '100%'}}>
 
- 
+<View style={stil.textContainer}>
+        <Text style={stil.Text}>Account Name</Text>
+      </View>
+
     </View>
 
   );
