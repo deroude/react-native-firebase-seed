@@ -88,6 +88,44 @@ export default function HomeScreen({ navigation }: any) {
   }}
 />
 </Marker>
+<Marker
+  coordinate={{ latitude: 31.416665, longitude: 34.333332 }}
+  onPress={showMarkerDialog} 
+>
+<Icon
+  name="warning"
+  size={30}
+  color="red"
+  style={{
+    textShadowColor: 'red',
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 10,
+    shadowColor: 'red', 
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.6, 
+    elevation: 3,
+  }}
+/>
+</Marker>
+<Marker
+  coordinate={{ latitude: 15.5539046, longitude: 48.1748476 }}
+  onPress={showMarkerDialog} 
+>
+<Icon
+  name="warning"
+  size={30}
+  color="orange"
+  style={{
+    textShadowColor: 'orange',
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 10,
+    shadowColor: 'orange', 
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.1, 
+    elevation: 3,
+  }}
+/>
+</Marker>
       </MapView>
       <Portal>
         <Dialog visible={markerDialogVisible} onDismiss={hideDialog}>
