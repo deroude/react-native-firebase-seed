@@ -9,6 +9,7 @@ import { Marker } from "react-native-maps";
 import { List } from 'react-native-paper';
 import { Dialog, Portal, Text, Button } from 'react-native-paper'
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { IconButton, MD3Colors } from 'react-native-paper';
 
 
 const stil = StyleSheet.create({
@@ -26,6 +27,8 @@ const stil = StyleSheet.create({
     borderStyle: "solid",
     borderWidth:2,
     marginTop:5,
+    display: "flex",
+    flexDirection: "row",
   },
   container: {
     flex:1,
@@ -90,7 +93,6 @@ export default function HomeScreen({ navigation }: any) {
 </Marker>
 <Marker
   coordinate={{ latitude: 31.416665, longitude: 34.333332 }}
-  onPress={showMarkerDialog} 
 >
 <Icon
   name="warning"
@@ -109,7 +111,6 @@ export default function HomeScreen({ navigation }: any) {
 </Marker>
 <Marker
   coordinate={{ latitude: 15.5539046, longitude: 48.1748476 }}
-  onPress={showMarkerDialog} 
 >
 <Icon
   name="warning"
@@ -120,6 +121,42 @@ export default function HomeScreen({ navigation }: any) {
     textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 10,
     shadowColor: 'orange', 
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.1, 
+    elevation: 3,
+  }}
+/>
+</Marker>
+<Marker
+  coordinate={{ latitude: 4.1156735, longitude: -72.9301367 }}
+>
+<Icon
+  name="warning"
+  size={30}
+  color="yellow"
+  style={{
+    textShadowColor: 'yellow',
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 10,
+    shadowColor: 'yellow', 
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.1, 
+    elevation: 3,
+  }}
+/>
+</Marker>
+<Marker
+  coordinate={{ latitude: 19.311143, longitude: 77.774373 }}
+>
+<Icon
+  name="warning"
+  size={30}
+  color="yellow"
+  style={{
+    textShadowColor: 'yellow',
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 10,
+    shadowColor: 'yellow', 
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.1, 
     elevation: 3,
@@ -142,15 +179,22 @@ export default function HomeScreen({ navigation }: any) {
           </Dialog.Actions>
         </Dialog>
       </Portal>
-
+      <SafeAreaView style={stil.container}>
+      <ScrollView horizontal showsHorizontalScrollIndicator={true}>
       <Surface style={stil.search}>
         <TextInput
           placeholder="Type Here..."
           onChangeText={text => updateSearch(text)}
           value={search}
         />
-      <SafeAreaView style={stil.container}>
-      <ScrollView horizontal showsHorizontalScrollIndicator={true}>
+        <IconButton
+    icon="camera"
+    iconColor={MD3Colors.error50}
+    size={20}
+    onPress={() => console.log('Pressed')}
+  />
+  </Surface>
+      
       <SegmentedButtons
         value={value}
         onValueChange={setValue}
@@ -218,7 +262,6 @@ export default function HomeScreen({ navigation }: any) {
       </List.Accordion>
       
     </List.Section>
-    </Surface>
     </View>
   );
 }
