@@ -1,5 +1,6 @@
 {
   "expo": {
+    "newArchEnabled": true,
     "name": "react-native-firebase-seed",
     "slug": "react-native-firebase-seed",
     "version": "1.0.0",

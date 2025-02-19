@@ -6,18 +6,18 @@ import {
     getAuth,
     initializeAuth,
     onAuthStateChanged,
-    signInWithEmailAndPassword
+    signInWithEmailAndPassword,
+    // @ts-ignore
+    getReactNativePersistence
 } from 'firebase/auth';
 //@ts-ignore
-import { getReactNativePersistence } from '@firebase/auth/dist/rn/index.js';
 import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
 import { StyleProp, View, ViewStyle } from "react-native";
 import { Button, TextInput } from "react-native-paper";
 
 const app = initializeApp(firebaseConfig);
-const auth = initializeAuth(app, {
-    persistence: getReactNativePersistence(ReactNativeAsyncStorage)
-});
+const auth = getAuth(app);
+auth.setPersistence(getReactNativePersistence(ReactNativeAsyncStorage));
 
 const LoginScreen = ({ navigation }: any) => {
 
@@ -25,6 +25,8 @@ const LoginScreen = ({ navigation }: any) => {
         if (user != null) {
             AsyncStorage.setItem('@user', JSON.stringify(user))
                 .then(() => navigation.navigate('Main'));
+        } else {
+            console.log('User is signed out');
         }
     });
 
@@ -36,6 +38,15 @@ const LoginScreen = ({ navigation }: any) => {
         alignSelf: 'stretch',
         margin: 20
     };
+
+    const signIn = async () => {
+        try{
+            const signInResult = await signInWithEmailAndPassword(auth, email, password);
+            console.log('User signed in: ', signInResult)
+        } catch (error) {
+            console.log('Error signing in: ', error);
+        }
+    }
 
     return (
         <View style={{ alignSelf: 'stretch', display: 'flex', flexDirection: 'column', height: '50%', marginTop: '30%' }}>
@@ -55,8 +66,8 @@ const LoginScreen = ({ navigation }: any) => {
                 onChangeText={(password) => setPassword(password)}
                 right={<TextInput.Icon icon="eye" onPress={() => setHidePassword(!hidePassword)} />}
             />
-            <Button mode="outlined" style={{ alignSelf: 'center' }}
-                onPress={() => signInWithEmailAndPassword(auth, email, password)}
+            <Button mode="outlined" style={{ alignSelf: 'center', width: '50%' }}
+                onPress={signIn}
             >Login</Button>
         </View>
     );

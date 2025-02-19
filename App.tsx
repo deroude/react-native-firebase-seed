@@ -5,12 +5,16 @@ import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import LoginScreen from './app/screens/Login';
 import MainNavigator from './app/screens/Main';
 
-import { LogBox } from 'react-native';
+// import { LogBox } from 'react-native';
 
-LogBox.ignoreLogs([
-  /^AsyncStorage has been extracted from react-native/,
-  /^Setting a timer for a long period of time/
-]);
+if (typeof globalThis.setImmediate === undefined) {
+  globalThis.setImmediate = setTimeout as any;
+}
+
+// LogBox.ignoreLogs([
+//   /^AsyncStorage has been extracted from react-native/,
+//   /^Setting a timer for a long period of time/
+// ]);
 
 //https://reactnavigation.org/docs/hello-react-navigation
 const Stack = createNativeStackNavigator();

@@ -10,23 +10,23 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "@react-native-async-storage/async-storage": "~1.21.0",
-    "@react-navigation/bottom-tabs": "^6.5.11",
-    "@react-navigation/native": "^6.1.9",
-    "@react-navigation/native-stack": "^6.9.17",
-    "expo": "~50.0.2",
-    "expo-status-bar": "~1.11.1",
-    "firebase": "^10.7.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-native": "0.73.2",
-    "react-native-paper": "^5.12.2"
+    "@react-native-async-storage/async-storage": "~2.1.1",
+    "@react-navigation/bottom-tabs": "^7.2.0",
+    "@react-navigation/native": "^7.0.14",
+    "@react-navigation/native-stack": "^7.2.0",
+    "expo": "~52.0.35",
+    "expo-status-bar": "~2.0.1",
+    "firebase": "^11.3.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-native": "0.76.3",
+    "react-native-paper": "^5.13.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.7",
-    "@types/react": "~18.2.48",
-    "@types/react-native": "~0.72.8",
-    "typescript": "~5.3.3"
+    "@babel/core": "^7.26.9",
+    "@types/react": "18.3.1",
+    "@types/react-native": "~0.73.0",
+    "typescript": "~5.7.3"
   },
   "private": true
 }
