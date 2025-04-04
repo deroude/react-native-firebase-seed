@@ -24,14 +24,14 @@ const theme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    primary: 'tomato',
+    primary: 'magenta',
     accent: 'yellow',
   },
 };
 
 function App() {
   return (
-    <PaperProvider theme={theme}>
+    <PaperProvider theme={theme} settings={{rippleEffectEnabled: true}}>
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
