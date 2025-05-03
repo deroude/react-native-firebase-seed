@@ -2,14 +2,12 @@ import React, { useState } from "react";
 import { StyleProp, ViewStyle } from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import MainLayout from "./Layout";
-import { getFirestore, setDoc, doc, addDoc, collection } from 'firebase/firestore';
 
 const inputStyle: StyleProp<ViewStyle> = {
         alignSelf: 'stretch',
         margin: 20
 };
 
-const db = getFirestore();
 
 const ItemEditScreen = ({ navigation, route }: any) => {
         const [item, setItem] = useState<{ label: string, quantity: number, id?: string }>(route.params?.item || {})
@@ -32,12 +30,7 @@ const ItemEditScreen = ({ navigation, route }: any) => {
                 />
 
                 <Button mode="outlined" style={{ alignSelf: 'center' }}
-                        onPress={async () => {
-                                if (item.id) {
-                                        await setDoc(doc(db, 'items', item.id), { label: item.label, quantity: item.quantity });
-                                } else {
-                                        await addDoc(collection(db, 'items'), item);
-                                }
+                        onPress={async () => {                                
                                 navigation.navigate('ItemList');
                         }}
                 >Save</Button>
